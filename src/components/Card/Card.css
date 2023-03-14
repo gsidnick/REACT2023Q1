@@ -1,0 +1,45 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 300px;
+  padding: 40px;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px rgba(128, 128, 128, 0.5);
+  transform: scale(1.01);
+}
+
+.card__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card__title {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--rss-main);
+}
+
+.card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--rss-primary);
+}
+
+.card__description {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--rss-grey);
+}
+
+.card__button {
+  margin: 10px 0 0 0;
+}
