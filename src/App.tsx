@@ -1,11 +1,14 @@
 import React from 'react';
+import Header from './components/Header/Header';
+
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>REACT2023Q1</h1>
+        <Header />
       </div>
     );
   }
 }
+
 export default App;
