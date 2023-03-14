@@ -1,0 +1,25 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found__title {
+  font-size: 120px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--rss-primary);
+}
+
+.not-found__subtitle {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--rss-primary);
+}
+
+.not-found__message {
+  text-align: center;
+  margin: 40px 0 0 0;
+}
