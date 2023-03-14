@@ -1,0 +1,15 @@
+.button {
+  border-radius: 100px;
+  padding: 12px 32px;
+  color: var(--rss-white);
+  background-color: var(--rss-primary);
+  border: 0;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #e86408;
+}
