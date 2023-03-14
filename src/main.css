@@ -7,10 +7,17 @@
   --rss-grey: #818181;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*::selection {
+  color: var(--rss-white);
+  background-color: var(--rss-primary);
 }
 
 html {
@@ -27,6 +34,13 @@ body {
   font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="text"] {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
 }
 
 .container {
