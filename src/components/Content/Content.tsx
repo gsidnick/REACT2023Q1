@@ -1,14 +1,15 @@
 import './Content.css';
 import React from 'react';
-import Catalog from '../Catalog/Catalog';
+import { IContentProps } from './IContentProps';
 
-class Content extends React.Component {
+class Content extends React.Component<IContentProps, object> {
+  constructor(props: IContentProps) {
+    super(props);
+  }
   render() {
     return (
       <main className="content">
-        <div className="content__container container">
-          <Catalog />
-        </div>
+        <div className="content__container container">{this.props?.children}</div>
       </main>
     );
   }
