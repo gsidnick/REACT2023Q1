@@ -1,19 +1,20 @@
 import './Menu.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
   render() {
     return (
       <ul className="menu">
         <li className="menu__item">
-          <a className="menu__link menu__link_active" href="/">
+          <Link className="menu__link menu__link_active" to="/">
             Pizza
-          </a>
+          </Link>
         </li>
         <li className="menu__item">
-          <a className="menu__link" href="/about">
+          <Link className="menu__link" to="/about">
             About Us
-          </a>
+          </Link>
         </li>
       </ul>
     );
