@@ -16,9 +16,7 @@ class Card extends React.Component {
         <span className="card__description">
           Spicy Pepperoni, Extra Mozzarella, Signature Tomato Sauce
         </span>
-        <div className="card__button">
-          <Button />
-        </div>
+        <Button className="card__button">Add to cart</Button>
       </div>
     );
   }
