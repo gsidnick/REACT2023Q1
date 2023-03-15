@@ -1,5 +1,6 @@
 import './NotFound.css';
 import React from 'react';
+import Button from '../UI/Button/Button';
 
 class NotFound extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class NotFound extends React.Component {
           <p>We didn’t find this page.</p>
           <p>But we know where to find a lot of delicious things.</p>
         </span>
+        <Button className="not-found__button">Go to home</Button>
       </div>
     );
   }
