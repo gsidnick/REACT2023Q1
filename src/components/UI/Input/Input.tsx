@@ -1,12 +1,23 @@
 import './Input.css';
 import React from 'react';
+import { IInputProps } from './IInputProps';
 
-class Input extends React.Component {
+class Input extends React.Component<IInputProps> {
+  constructor(props: object) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="input">
         <div className="input__icon input__icon_search">
-          <input className="input__field" type="text" placeholder="Search" />
+          <input
+            className="input__field"
+            type="text"
+            placeholder="Search"
+            value={this.props.value}
+            onChange={this.props.onChange}
+          />
         </div>
       </div>
     );
