@@ -8,7 +8,10 @@ class Button extends React.Component<IButtonProps, object> {
   }
   render() {
     return (
-      <button className={this.props?.className ? `${this.props?.className} button` : 'button'}>
+      <button
+        className={this.props?.className ? `${this.props.className} button` : 'button'}
+        onClick={this.props.onClick}
+      >
         {this.props?.children}
       </button>
     );
