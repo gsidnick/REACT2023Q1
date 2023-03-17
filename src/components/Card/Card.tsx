@@ -1,21 +1,20 @@
 import './Card.css';
 import React from 'react';
 import Button from '../UI/Button/Button';
+import ICardProps from './ICardProps';
 
-class Card extends React.Component {
+class Card extends React.Component<ICardProps> {
+  constructor(props: ICardProps) {
+    super(props);
+  }
   render() {
+    const { image, name, price, description } = this.props.value;
     return (
       <div className="card">
-        <img
-          className="card__image"
-          src="../fb9cc5b8ff2e47bdbcbdcb5930cddf06_292x292.webp"
-          alt="Pepperoni"
-        ></img>
-        <h3 className="card__title">Pepperoni</h3>
-        <span className="card__price">$8.49</span>
-        <span className="card__description">
-          Spicy Pepperoni, Extra Mozzarella, Signature Tomato Sauce
-        </span>
+        <img className="card__image" src={`../${image}`} alt={name}></img>
+        <h3 className="card__title">{name}</h3>
+        <span className="card__price">${price}</span>
+        <span className="card__description">{description}</span>
         <Button className="card__button">Add to cart</Button>
       </div>
     );
