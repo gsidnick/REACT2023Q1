@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
 import { IWithRouterProps } from '../../hoc/IWithRouterProps';
 import withRouter from '../../hoc/withRouter';
-import getPageName from '../../utils/getPageName';
+import { getPageName } from '../../utils/page';
 
 class Header extends React.Component<IWithRouterProps> {
   render() {

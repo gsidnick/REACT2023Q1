@@ -1,4 +1,4 @@
-function getPageName(path: string) {
+export function getPageName(path: string) {
   switch (path) {
     case '/':
       return 'Pizza';
