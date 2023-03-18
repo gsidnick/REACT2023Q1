@@ -9,4 +9,6 @@ export function getPageName(path: string) {
   }
 }
 
-export default getPageName;
+export function isActivePage(to: string, pathname: string): boolean {
+  return to === pathname;
+}
