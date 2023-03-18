@@ -3,7 +3,7 @@ import React from 'react';
 import { IInputProps } from './IInputProps';
 
 class Input extends React.Component<IInputProps> {
-  constructor(props: object) {
+  constructor(props: IInputProps) {
     super(props);
   }
 
