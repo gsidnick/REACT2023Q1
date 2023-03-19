@@ -58,7 +58,7 @@
   {
     "id": "1a1a9ddd1713d17a83e1a641dba785af",
     "name": "BBQ chicken",
-    "description": "Ham, Bacon, Bbq Sauce, Red Onion, Mozzarella, Signature Tomato Sauce",
+    "description": "Ham, Bacon, BBQ Sauce, Red Onion, Mozzarella, Signature Tomato Sauce",
     "image": "45cc8ffb190c4a28aaf1863a67f675c7_292x292.webp",
     "price": 11.49
   },
@@ -114,7 +114,7 @@
   {
     "id": "bca2bc523688ebba41379df6f53fa2ff",
     "name": "Diablo",
-    "description": "Spicy Chorizo, Hot Jalapeno Peppers, Bbq Sauce, Meatballs, Tomatoes, Bell Peppers, Red Onion, Mozzarella, Signature Tomato Sauce",
+    "description": "Spicy Chorizo, Hot Jalapeno Peppers, BBQ Sauce, Meatballs, Tomatoes, Bell Peppers, Red Onion, Mozzarella, Signature Tomato Sauce",
     "image": "03c840b1ab6f4ccb84f5dc167e146598_292x292.webp",
     "price": 12.99
   },
@@ -135,7 +135,7 @@
   {
     "id": "762fc2847dda3bc4ca78b9300814dbb4",
     "name": "BBQ sausages",
-    "description": "Spicy Chorizo, Bbq Sauce, Tomatoes, Red Onion, Mozzarella, Signature Tomato Sauce",
+    "description": "Spicy Chorizo, BBQ Sauce, Tomatoes, Red Onion, Mozzarella, Signature Tomato Sauce",
     "image": "10b95b8611ec457dbffd9613b8eb165a_292x292.webp",
     "price": 8.49
   },
