@@ -1,6 +1,6 @@
 import './Content.css';
 import React from 'react';
-import { IContentProps } from './IContentProps';
+import { IContentProps } from '../../interfaces/IContentProps';
 
 class Content extends React.Component<IContentProps, object> {
   constructor(props: IContentProps) {

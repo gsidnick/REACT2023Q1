@@ -1,7 +1,7 @@
 import './Card.css';
 import React from 'react';
 import Button from '../UI/Button/Button';
-import ICardProps from './ICardProps';
+import ICardProps from '../../interfaces/ICardProps';
 
 class Card extends React.Component<ICardProps> {
   constructor(props: ICardProps) {

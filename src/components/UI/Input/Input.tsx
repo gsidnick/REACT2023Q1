@@ -1,6 +1,6 @@
 import './Input.css';
 import React from 'react';
-import { IInputProps } from './IInputProps';
+import { IInputProps } from '../../../interfaces/IInputProps';
 
 class Input extends React.Component<IInputProps> {
   constructor(props: IInputProps) {

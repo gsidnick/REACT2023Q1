@@ -1,4 +1,4 @@
-import IProduct from '../../interfaces/IProduct';
+import IProduct from './IProduct';
 
 export interface IListProps {
   value: IProduct[];

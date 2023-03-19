@@ -1,7 +1,7 @@
 import './List.css';
 import React from 'react';
 import Card from '../Card/Card';
-import { IListProps } from './IListProps';
+import { IListProps } from '../../interfaces/IListProps';
 
 class List extends React.Component<IListProps> {
   constructor(props: IListProps) {

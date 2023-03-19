@@ -1,6 +1,6 @@
 import './Button.css';
 import React from 'react';
-import { IButtonProps } from './IButtonProps';
+import { IButtonProps } from '../../../interfaces/IButtonProps';
 
 class Button extends React.Component<IButtonProps, object> {
   constructor(props: IButtonProps) {
