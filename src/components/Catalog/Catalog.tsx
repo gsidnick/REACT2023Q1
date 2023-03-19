@@ -29,7 +29,6 @@ class Catalog extends React.Component<object, { query: string; products: IProduc
   searchChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ query: event.target.value });
     this.applyFilter(event.target.value);
-    setQuery(event.target.value);
   }
 
   applyFilter(query: string) {
