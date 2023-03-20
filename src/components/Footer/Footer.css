@@ -1,0 +1,40 @@
+.footer {
+  padding: 20px 0;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__school-logo {
+  justify-self: flex-start;
+  font-size: 0;
+}
+
+.footer__copyright {
+  justify-self: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--rss-grey);;
+  line-height: 100%;
+}
+
+.footer__contributors {
+  display: flex;
+  justify-self: flex-end;
+  gap: 10px;
+  font-size: 0;
+}
+
+.footer__svg {
+  fill: var(--rss-grey);
+  transition: all 0.3s ease-in-out;
+}
+
+.footer__link:hover .footer__svg {
+  fill: var(--rss-primary);
+}

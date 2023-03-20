@@ -1,0 +1,20 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  list-style: none;
+  justify-self: flex-end;
+}
+
+.menu__link {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--rss-primary);
+  padding: 10px;
+  display: inline;
+}
+
+.menu__link_active {
+  border-bottom: 3px solid var(--rss-primary);
+}

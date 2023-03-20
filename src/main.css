@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+  --rss-primary: #ff6c06;
+  --rss-main: #3b3b3b;
+  --rss-white: #ffffff;
+  --rss-grey: #818181;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::selection {
+  color: var(--rss-white);
+  background-color: var(--rss-primary);
+}
+
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+  background-color: var(--rss-white);
+  color: var(--rss-main);
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="text"],
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
