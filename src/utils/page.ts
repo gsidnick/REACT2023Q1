@@ -2,6 +2,8 @@ export function getPageName(path: string) {
   switch (path) {
     case '/':
       return 'Pizza';
+    case '/control':
+      return 'Control';
     case '/about':
       return 'About Us';
     default:

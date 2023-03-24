@@ -1,0 +1,24 @@
+.control {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+}
+
+.control__col {
+  display: grid;
+  grid-template-rows: minmax(20px, auto) auto;
+  justify-items: center;
+  gap: 20px;
+}
+
+.control__title {
+  font-size: 36px;
+  text-align: center;
+}
+
+.control__text {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 150%;
+  text-align: center;
+}

@@ -21,6 +21,16 @@ class Menu extends React.Component<IWithRouterProps> {
         <li className="menu__item">
           <Link
             className={
+              isActivePage('/control', pathname) ? 'menu__link menu__link_active' : 'menu__link'
+            }
+            to="/control"
+          >
+            Control
+          </Link>
+        </li>
+        <li className="menu__item">
+          <Link
+            className={
               isActivePage('/about', pathname) ? 'menu__link menu__link_active' : 'menu__link'
             }
             to="/about"
