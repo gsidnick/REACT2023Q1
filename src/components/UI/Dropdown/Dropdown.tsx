@@ -22,6 +22,7 @@ class Dropdown extends React.Component<IDropdownProps, { isOpen: boolean; value:
     let v = '';
     if (target.textContent !== null) v = target.textContent;
     this.setState({ value: v });
+    this.setState({ isOpen: !this.state.isOpen });
   }
   render() {
     return (
