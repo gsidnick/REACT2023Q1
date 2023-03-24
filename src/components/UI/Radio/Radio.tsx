@@ -14,6 +14,7 @@ class Radio extends React.Component<IRadioProps> {
           className="radio__field"
           type="radio"
           name={this.props.name}
+          value={this.props.value}
           ref={this.props.forwardedRef}
         />
         <span className="radio__wrapper">

@@ -5,6 +5,7 @@ import InputText from '../UI/InputText/InputText';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import Radio from '../UI/Radio/Radio';
+import Button from '../UI/Button/Button';
 
 class Form extends React.Component {
   private readonly formRef: React.RefObject<HTMLFormElement>;
@@ -33,11 +34,18 @@ class Form extends React.Component {
         <InputFile ref={this.imageRef} name="image" label="Choose photo" />
         <div className="form__question">
           <span className="form__question-label">What are you ready to check?</span>
-          <Radio name="radio">Restaurant and Delivery</Radio>
-          <Radio name="radio">Cuisine</Radio>
-          <Radio name="radio">All together</Radio>
+          <Radio name="radio" value="restaurant">
+            Restaurant and Delivery
+          </Radio>
+          <Radio name="radio" value="cuisine">
+            Cuisine
+          </Radio>
+          <Radio name="radio" value="all">
+            All together
+          </Radio>
         </div>
         <Checkbox name="check1">I agree to the processing of personal data</Checkbox>
+        <Button>Send information</Button>
       </form>
     );
   }
