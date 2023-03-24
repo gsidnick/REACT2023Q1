@@ -49,7 +49,12 @@ class Catalog extends React.Component<object, { query: string; products: IProduc
     return (
       <div className="catalog">
         <div className="catalog__search">
-          <Input value={this.state.query} onChange={this.searchChangeHandler} />
+          <Input
+            type="text"
+            placeholder="Search"
+            value={this.state.query}
+            onChange={this.searchChangeHandler}
+          />
         </div>
         <div className="catalog__products">
           <List value={this.state.products} />

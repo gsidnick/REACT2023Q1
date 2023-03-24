@@ -13,8 +13,8 @@ class Input extends React.Component<IInputProps> {
         <div className="input__icon input__icon_search">
           <input
             className="input__field"
-            type="text"
-            placeholder="Search"
+            type={this.props.type}
+            placeholder={this.props.placeholder}
             value={this.props.value}
             onChange={this.props.onChange}
           />
