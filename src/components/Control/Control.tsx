@@ -1,5 +1,6 @@
 import './Control.css';
 import React from 'react';
+import Form from '../Form/Form';
 
 class Control extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class Control extends React.Component {
               Fill out the questionnaire:
             </p>
           </div>
+          <Form />
         </div>
         <div className="control__col">
           <h2 className="control__title">Your Requests</h2>
