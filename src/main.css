@@ -3,9 +3,11 @@
 :root {
   --rss-primary: #ff6c06;
   --rss-primary-dark: #e86408;
+  --rss-primary-light: #ffefe9;
   --rss-main: #3b3b3b;
   --rss-white: #ffffff;
   --rss-grey: #818181;
+  --rss-grey-light: #f6f6f6;
 }
 
 *,
