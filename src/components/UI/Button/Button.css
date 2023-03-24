@@ -11,7 +11,7 @@
 }
 
 .button:hover {
-  background-color: #e86408;
+  background-color: var(--rss-primary-dark);
 }
 
 .button:active {

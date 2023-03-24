@@ -6,7 +6,7 @@
 }
 
 .input-file:hover > .input-file__button {
-  background-color: #e86408;
+  background-color: var(--rss-primary-dark);
 }
 
 .input-file:active > .input-file__button {
