@@ -1,0 +1,56 @@
+.input-file {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  cursor: pointer;
+}
+
+.input-file:hover > .input-file__button {
+  background-color: #e86408;
+}
+
+.input-file:active > .input-file__button {
+  transform: none;
+}
+
+.input-file__name {
+  flex-grow: 1;
+  border-top: 1px solid var(--rss-primary);
+  border-left: 1px solid var(--rss-primary);
+  border-bottom: 1px solid var(--rss-primary);
+  border-radius: 100px 0 0 100px;
+  padding: 12px 24px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 0 0 0 transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-file__field:focus + .input-file__name,
+.input-file__field:focus + .input-file__name + .input-file__button {
+  box-shadow: 0 0 0 1px var(--rss-primary);
+}
+
+.input-file__field {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.input-file__button {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 0 100px 100px 0;
+  box-shadow: 0 0 0 0 transparent;
+  transition: all 0.3s ease-in-out;
+}
