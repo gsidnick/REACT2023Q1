@@ -9,6 +9,7 @@ class Button extends React.Component<IButtonProps, object> {
   render() {
     return (
       <button
+        type="button"
         className={this.props?.className ? `${this.props.className} button` : 'button'}
         onClick={this.props.onClick}
       >
