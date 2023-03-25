@@ -14,6 +14,7 @@ class Checkbox extends React.Component<ICheckboxProps> {
           className="checkbox__field"
           type="checkbox"
           name={this.props.name}
+          value={this.props.value}
           ref={this.props.forwardedRef}
         />
         <span className="checkbox__wrapper">
