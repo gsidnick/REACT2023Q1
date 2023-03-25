@@ -6,9 +6,16 @@
 
 .control__col {
   display: grid;
-  grid-template-rows: minmax(20px, auto) auto;
   justify-items: center;
   gap: 20px;
+}
+
+.control__questions {
+  grid-template-rows: 150px auto;
+}
+
+.control__requests {
+  grid-template-rows: 60px auto;
 }
 
 .control__title {
@@ -21,4 +28,8 @@
   font-weight: 300;
   line-height: 150%;
   text-align: center;
+}
+
+.control__list {
+  width: 100%;
 }
