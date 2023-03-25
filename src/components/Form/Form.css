@@ -8,6 +8,7 @@
 .form__question {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .form__question-label {
@@ -16,5 +17,13 @@
   line-height: 150%;
   text-align: center;
   margin: 8px 0;
+}
+
+.form__submit {
+  display: grid;
+  grid-template-rows: 1fr;
+  row-gap: 20px;
+  border-top: 1px solid var(--rss-grey);
+  padding-top: 20px;
 }
 
