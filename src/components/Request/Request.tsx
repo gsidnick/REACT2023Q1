@@ -8,7 +8,7 @@ class Request extends React.Component<IRequestProps> {
   }
 
   render() {
-    const { photo, city, name, birthday, email, check } = this.props.data;
+    const { photo, city, name, birthday, gender, email, check } = this.props.data;
     return (
       <div className="request">
         <img className="request__photo" src={photo} alt="Photo" />
@@ -24,6 +24,10 @@ class Request extends React.Component<IRequestProps> {
           <div className="request__row">
             <span className="request__field">Birthday</span>
             <span className="request__value">{birthday}</span>
+          </div>
+          <div className="request__row">
+            <span className="request__field">Gender</span>
+            <span className="request__value">{gender}</span>
           </div>
           <div className="request__row">
             <span className="request__field">Email</span>

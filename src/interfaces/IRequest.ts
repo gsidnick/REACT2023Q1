@@ -4,5 +4,6 @@ export interface IRequest {
   birthday: string;
   email: string;
   photo: string;
+  gender: string;
   check: string;
 }
