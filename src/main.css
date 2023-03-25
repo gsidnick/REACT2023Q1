@@ -8,7 +8,12 @@
   --rss-white: #ffffff;
   --rss-grey: #818181;
   --rss-grey-light: #f6f6f6;
-  --rss-error: #f60606;
+  --rss-error-dark: #9a0b0b;
+  --rss-error: #e71717;
+  --rss-error-light: #f17474;
+  --rss-success-dark: #0e813f;
+  --rss-success: #06f66e;
+  --rss-success-light: #83ecaf;
 }
 
 *,

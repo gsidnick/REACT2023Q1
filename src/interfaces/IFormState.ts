@@ -9,4 +9,5 @@ export default interface IFormState {
   genderError: IError;
   checkError: IError;
   agreeError: IError;
+  showNotice: boolean;
 }

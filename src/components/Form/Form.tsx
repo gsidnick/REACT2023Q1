@@ -21,6 +21,8 @@ import {
   validatePhoto,
 } from '../../utils/validators';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Notice from '../Notice/Notice';
+import IError from '../../interfaces/IError';
 
 class Form extends React.Component<IFormProps, IFormState> {
   private readonly formRef: React.RefObject<HTMLFormElement>;
@@ -43,6 +45,18 @@ class Form extends React.Component<IFormProps, IFormState> {
     super(props);
     this.formData = {} as IRequest;
     this.isValidForm = false;
+    this.state = {} as IFormState;
+    this.state = {
+      cityError: {} as IError,
+      nameError: {} as IError,
+      birthdayError: {} as IError,
+      emailError: {} as IError,
+      photoError: {} as IError,
+      genderError: {} as IError,
+      checkError: {} as IError,
+      agreeError: {} as IError,
+      showNotice: false,
+    };
     this.formRef = React.createRef();
     this.cityRef = React.createRef();
     this.nameRef = React.createRef();
@@ -100,6 +114,7 @@ class Form extends React.Component<IFormProps, IFormState> {
   }
 
   validateForm(): void {
+    this.isValidForm = false;
     const formErrors = [];
     const cityError = validateCity(this.cityRef.current?.value);
     formErrors.push(cityError.error);
@@ -150,68 +165,84 @@ class Form extends React.Component<IFormProps, IFormState> {
   onSubmitHandler() {
     this.validateForm();
     if (this.isValidForm) this.sendForm();
+    this.showNotice();
+  }
+
+  showNotice() {
+    this.setState({ showNotice: true });
+    setTimeout(() => {
+      this.setState({ showNotice: false });
+    }, 3000);
   }
 
   render() {
     return (
-      <form className="form" ref={this.formRef}>
-        <Dropdown ref={this.cityRef} name="city" />
-        {this.state?.cityError.error && (
-          <ErrorMessage errorMessages={this.state.cityError.errorMessages} />
-        )}
-        <InputText ref={this.nameRef} name="name" placeholder="Name" />
-        {this.state?.nameError.error && (
-          <ErrorMessage errorMessages={this.state.nameError.errorMessages} />
-        )}
-        <InputDate ref={this.birthdayRef} name="birthday" />
-        {this.state?.birthdayError.error && (
-          <ErrorMessage errorMessages={this.state.birthdayError.errorMessages} />
-        )}
-        <InputText ref={this.emailRef} name="email" placeholder="E-mail" />
-        {this.state?.emailError.error && (
-          <ErrorMessage errorMessages={this.state.emailError.errorMessages} />
-        )}
-        <InputFile ref={this.photoRef} name="image" label="Choose photo" />
-        {this.state?.photoError.error && (
-          <ErrorMessage errorMessages={this.state.photoError.errorMessages} />
-        )}
-        <div className="form__question">
-          <span className="form__question-label">What gender are you?</span>
-          <Radio ref={this.maleRef} name="gender" value="Male">
-            Male
-          </Radio>
-          <Radio ref={this.femaleRef} name="gender" value="Female">
-            Female
-          </Radio>
-          {this.state?.genderError.error && (
-            <ErrorMessage errorMessages={this.state.genderError.errorMessages} />
+      <>
+        <form className="form" ref={this.formRef}>
+          <Dropdown ref={this.cityRef} name="city" />
+          {this.state?.cityError.error && (
+            <ErrorMessage errorMessages={this.state.cityError.errorMessages} />
           )}
-        </div>
-        <div className="form__question">
-          <span className="form__question-label">What are you ready to check?</span>
-          <Checkbox ref={this.restaurantRef} name="restaurant" value="Restaurant">
-            Restaurant
-          </Checkbox>
-          <Checkbox ref={this.deliveryRef} name="delivery" value="Delivery">
-            Delivery
-          </Checkbox>
-          <Checkbox ref={this.cuisineRef} name="cuisine" value="Cuisine">
-            Cuisine
-          </Checkbox>
-          {this.state?.checkError.error && (
-            <ErrorMessage errorMessages={this.state.checkError.errorMessages} />
+          <InputText ref={this.nameRef} name="name" placeholder="Name" />
+          {this.state?.nameError.error && (
+            <ErrorMessage errorMessages={this.state.nameError.errorMessages} />
           )}
-        </div>
-        <div className="form__submit">
-          <Checkbox ref={this.agreeRef} name="agree" value="I agree">
-            I agree to the processing of personal data
-          </Checkbox>
-          {this.state?.agreeError.error && (
-            <ErrorMessage errorMessages={this.state.agreeError.errorMessages} />
+          <InputDate ref={this.birthdayRef} name="birthday" />
+          {this.state?.birthdayError.error && (
+            <ErrorMessage errorMessages={this.state.birthdayError.errorMessages} />
           )}
-          <Button onClick={this.onSubmitHandler}>Send information</Button>
-        </div>
-      </form>
+          <InputText ref={this.emailRef} name="email" placeholder="E-mail" />
+          {this.state?.emailError.error && (
+            <ErrorMessage errorMessages={this.state.emailError.errorMessages} />
+          )}
+          <InputFile ref={this.photoRef} name="image" label="Choose photo" />
+          {this.state?.photoError.error && (
+            <ErrorMessage errorMessages={this.state.photoError.errorMessages} />
+          )}
+          <div className="form__question">
+            <span className="form__question-label">What gender are you?</span>
+            <Radio ref={this.maleRef} name="gender" value="Male">
+              Male
+            </Radio>
+            <Radio ref={this.femaleRef} name="gender" value="Female">
+              Female
+            </Radio>
+            {this.state?.genderError.error && (
+              <ErrorMessage errorMessages={this.state.genderError.errorMessages} />
+            )}
+          </div>
+          <div className="form__question">
+            <span className="form__question-label">What are you ready to check?</span>
+            <Checkbox ref={this.restaurantRef} name="restaurant" value="Restaurant">
+              Restaurant
+            </Checkbox>
+            <Checkbox ref={this.deliveryRef} name="delivery" value="Delivery">
+              Delivery
+            </Checkbox>
+            <Checkbox ref={this.cuisineRef} name="cuisine" value="Cuisine">
+              Cuisine
+            </Checkbox>
+            {this.state?.checkError.error && (
+              <ErrorMessage errorMessages={this.state.checkError.errorMessages} />
+            )}
+          </div>
+          <div className="form__submit">
+            <Checkbox ref={this.agreeRef} name="agree" value="I agree">
+              I agree to the processing of personal data
+            </Checkbox>
+            {this.state?.agreeError.error && (
+              <ErrorMessage errorMessages={this.state.agreeError.errorMessages} />
+            )}
+            <Button onClick={this.onSubmitHandler}>Send information</Button>
+          </div>
+        </form>
+        {this.isValidForm && this.state.showNotice && (
+          <Notice className="notice notice_success">Form data has been sent successfully</Notice>
+        )}
+        {!this.isValidForm && this.state.showNotice && (
+          <Notice className="notice notice_error">Form data contain errors</Notice>
+        )}
+      </>
     );
   }
 }
