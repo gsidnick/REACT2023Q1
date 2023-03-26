@@ -1,8 +1,6 @@
 import './Form.css';
 import React from 'react';
-import InputFile from '../UI/InputFile/InputFile';
 import InputText from '../UI/InputText/InputText';
-import Dropdown from '../UI/Dropdown/Dropdown';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import Radio from '../UI/Radio/Radio';
 import Button from '../UI/Button/Button';
@@ -26,7 +24,7 @@ import IError from '../../interfaces/IError';
 
 class Form extends React.Component<IFormProps, IFormState> {
   private readonly formRef: React.RefObject<HTMLFormElement>;
-  private readonly cityRef: React.RefObject<HTMLInputElement>;
+  private readonly cityRef: React.RefObject<HTMLSelectElement>;
   private readonly nameRef: React.RefObject<HTMLInputElement>;
   private readonly birthdayRef: React.RefObject<HTMLInputElement>;
   private readonly emailRef: React.RefObject<HTMLInputElement>;
@@ -40,7 +38,6 @@ class Form extends React.Component<IFormProps, IFormState> {
   private formData: IRequest;
 
   private isValidForm: boolean;
-
   constructor(props: IFormProps) {
     super(props);
     this.formData = {} as IRequest;
@@ -179,7 +176,14 @@ class Form extends React.Component<IFormProps, IFormState> {
     return (
       <>
         <form className="form" ref={this.formRef}>
-          <Dropdown ref={this.cityRef} name="city" />
+          <select ref={this.cityRef} name="city">
+            <option value="">Choose city</option>
+            <option value="Rome">Rome</option>
+            <option value="Milan">Milan</option>
+            <option value="Turin">Turin</option>
+            <option value="Palermo">Palermo</option>
+            <option value="Florence">Florence</option>
+          </select>
           {this.state?.cityError.error && (
             <ErrorMessage errorMessages={this.state.cityError.errorMessages} />
           )}
@@ -195,7 +199,7 @@ class Form extends React.Component<IFormProps, IFormState> {
           {this.state?.emailError.error && (
             <ErrorMessage errorMessages={this.state.emailError.errorMessages} />
           )}
-          <InputFile ref={this.photoRef} name="image" label="Choose photo" />
+          <input type="file" accept="image/png, image/jpeg" name="photo" ref={this.photoRef} />
           {this.state?.photoError.error && (
             <ErrorMessage errorMessages={this.state.photoError.errorMessages} />
           )}
