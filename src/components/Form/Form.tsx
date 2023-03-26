@@ -21,6 +21,7 @@ import {
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Notice from '../Notice/Notice';
 import IError from '../../interfaces/IError';
+import Select from '../UI/Select/Select';
 
 class Form extends React.Component<IFormProps, IFormState> {
   private readonly formRef: React.RefObject<HTMLFormElement>;
@@ -176,14 +177,7 @@ class Form extends React.Component<IFormProps, IFormState> {
     return (
       <>
         <form className="form" ref={this.formRef}>
-          <select ref={this.cityRef} name="city">
-            <option value="">Choose city</option>
-            <option value="Rome">Rome</option>
-            <option value="Milan">Milan</option>
-            <option value="Turin">Turin</option>
-            <option value="Palermo">Palermo</option>
-            <option value="Florence">Florence</option>
-          </select>
+          <Select ref={this.cityRef} name="city" />
           {this.state?.cityError.error && (
             <ErrorMessage errorMessages={this.state.cityError.errorMessages} />
           )}
