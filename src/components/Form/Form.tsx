@@ -193,7 +193,10 @@ class Form extends React.Component<IFormProps, IFormState> {
           {this.state?.emailError.error && (
             <ErrorMessage errorMessages={this.state.emailError.errorMessages} />
           )}
-          <input type="file" accept="image/png, image/jpeg" name="photo" ref={this.photoRef} />
+          <div className="form__question">
+            <span className="form__question-label">Upload your photo:</span>
+            <input type="file" accept="image/png, image/jpeg" name="photo" ref={this.photoRef} />
+          </div>
           {this.state?.photoError.error && (
             <ErrorMessage errorMessages={this.state.photoError.errorMessages} />
           )}
