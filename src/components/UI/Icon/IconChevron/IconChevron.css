@@ -1,0 +1,11 @@
+.icon-chevron {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  font-size: 0;
+}
+
+.icon-chevron__svg {
+  fill: currentColor;
+}

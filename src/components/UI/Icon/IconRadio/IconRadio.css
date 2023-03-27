@@ -1,0 +1,9 @@
+.icon-radio {
+  fill: currentColor;
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
