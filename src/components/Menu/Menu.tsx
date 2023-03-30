@@ -1,46 +1,36 @@
 import './Menu.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { IWithRouterProps } from '../../hoc/IWithRouterProps';
-import withRouter from '../../hoc/withRouter';
-import { isActivePage } from '../../utils/page';
+import { NavLink } from 'react-router-dom';
 
-class Menu extends React.Component<IWithRouterProps> {
-  render() {
-    const pathname = this.props.location.pathname;
-    return (
-      <ul className="menu">
-        <li className="menu__item">
-          <Link
-            className={isActivePage('/', pathname) ? 'menu__link menu__link_active' : 'menu__link'}
-            to="/"
-          >
-            Pizza
-          </Link>
-        </li>
-        <li className="menu__item">
-          <Link
-            className={
-              isActivePage('/control', pathname) ? 'menu__link menu__link_active' : 'menu__link'
-            }
-            to="/control"
-          >
-            Control
-          </Link>
-        </li>
-        <li className="menu__item">
-          <Link
-            className={
-              isActivePage('/about', pathname) ? 'menu__link menu__link_active' : 'menu__link'
-            }
-            to="/about"
-          >
-            About Us
-          </Link>
-        </li>
-      </ul>
-    );
-  }
+function Menu() {
+  return (
+    <ul className="menu">
+      <li className="menu__item">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'menu__link menu__link_active' : 'menu__link')}
+          to="/"
+        >
+          Pizza
+        </NavLink>
+      </li>
+      <li className="menu__item">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'menu__link menu__link_active' : 'menu__link')}
+          to="/control"
+        >
+          Control
+        </NavLink>
+      </li>
+      <li className="menu__item">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'menu__link menu__link_active' : 'menu__link')}
+          to="/about"
+        >
+          About Us
+        </NavLink>
+      </li>
+    </ul>
+  );
 }
 
-export default withRouter(Menu);
+export default Menu;
