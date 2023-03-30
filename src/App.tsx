@@ -8,25 +8,23 @@ import NotFound from './components/NotFound/NotFound';
 import Content from './components/Content/Content';
 import Control from './components/Control/Control';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <Header />
-          <Content>
-            <Routes>
-              <Route path="/" element={<Catalog />} />
-              <Route path="/control" element={<Control />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Content>
-          <Footer />
-        </Router>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <Content>
+          <Routes>
+            <Route path="/" element={<Catalog />} />
+            <Route path="/control" element={<Control />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Content>
+        <Footer />
+      </Router>
+    </div>
+  );
 }
 
 export default App;
