@@ -1,10 +1,11 @@
-export function setQuery(value: string) {
+export function setLocalQuery(value: string) {
   if (value !== '') {
-    localStorage.setItem('query', value);
+    window.localStorage.setItem('query', value);
   } else {
-    localStorage.removeItem('query');
+    window.localStorage.removeItem('query');
   }
 }
-export function getQuery(): string | null {
-  return localStorage.getItem('query');
+export function getLocalQuery(): string {
+  const query = window.localStorage.getItem('query');
+  return query !== null ? query : '';
 }
