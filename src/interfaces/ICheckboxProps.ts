@@ -5,5 +5,4 @@ export interface ICheckboxProps {
   value: string;
   children?: string | React.ReactNode;
   label?: string;
-  forwardedRef?: React.LegacyRef<HTMLInputElement>;
 }
