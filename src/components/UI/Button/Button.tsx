@@ -2,21 +2,16 @@ import './Button.css';
 import React from 'react';
 import { IButtonProps } from '../../../interfaces/IButtonProps';
 
-class Button extends React.Component<IButtonProps, object> {
-  constructor(props: IButtonProps) {
-    super(props);
-  }
-  render() {
-    return (
-      <button
-        type="button"
-        className={this.props?.className ? `${this.props.className} button` : 'button'}
-        onClick={this.props.onClick}
-      >
-        {this.props?.children}
-      </button>
-    );
-  }
+function Button({ ...props }: IButtonProps) {
+  return (
+    <button
+      type="button"
+      className={props?.className ? `${props.className} button` : 'button'}
+      onClick={props.onClick}
+    >
+      {props?.children}
+    </button>
+  );
 }
 
 export default Button;
