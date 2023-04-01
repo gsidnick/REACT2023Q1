@@ -1,13 +1,11 @@
 import './Form.css';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import InputText from '../UI/InputText/InputText';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import Radio from '../UI/Radio/Radio';
 import Button from '../UI/Button/Button';
 import InputDate from '../UI/InputDate/InputDate';
 import { IFormProps } from '../../interfaces/IFormProps';
-import { IRequest } from '../../interfaces/IRequest';
-import IFormState from '../../interfaces/IFormState';
 import {
   validateAgree,
   validateBirthday,
@@ -22,230 +20,194 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Notice from '../Notice/Notice';
 import IError from '../../interfaces/IError';
 import Select from '../UI/Select/Select';
+import { IRequest } from '../../interfaces/IRequest';
 
-class Form extends React.Component<IFormProps, IFormState> {
-  private readonly formRef: React.RefObject<HTMLFormElement>;
-  private readonly cityRef: React.RefObject<HTMLSelectElement>;
-  private readonly nameRef: React.RefObject<HTMLInputElement>;
-  private readonly birthdayRef: React.RefObject<HTMLInputElement>;
-  private readonly emailRef: React.RefObject<HTMLInputElement>;
-  private readonly photoRef: React.RefObject<HTMLInputElement>;
-  private readonly maleRef: React.RefObject<HTMLInputElement>;
-  private readonly femaleRef: React.RefObject<HTMLInputElement>;
-  private readonly agreeRef: React.RefObject<HTMLInputElement>;
-  private readonly restaurantRef: React.RefObject<HTMLInputElement>;
-  private readonly deliveryRef: React.RefObject<HTMLInputElement>;
-  private readonly cuisineRef: React.RefObject<HTMLInputElement>;
-  private formData: IRequest;
+let formData = {} as IRequest;
+let isValidForm = false;
 
-  private isValidForm: boolean;
-  constructor(props: IFormProps) {
-    super(props);
-    this.formData = {} as IRequest;
-    this.isValidForm = false;
-    this.state = {} as IFormState;
-    this.state = {
-      cityError: {} as IError,
-      nameError: {} as IError,
-      birthdayError: {} as IError,
-      emailError: {} as IError,
-      photoError: {} as IError,
-      genderError: {} as IError,
-      checkError: {} as IError,
-      agreeError: {} as IError,
-      showNotice: false,
-    };
-    this.formRef = React.createRef();
-    this.cityRef = React.createRef();
-    this.nameRef = React.createRef();
-    this.birthdayRef = React.createRef();
-    this.emailRef = React.createRef();
-    this.photoRef = React.createRef();
-    this.maleRef = React.createRef();
-    this.femaleRef = React.createRef();
-    this.restaurantRef = React.createRef();
-    this.deliveryRef = React.createRef();
-    this.cuisineRef = React.createRef();
-    this.agreeRef = React.createRef();
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
+function Form({ ...props }: IFormProps) {
+  const [notice, setNotice] = useState<boolean>(false);
+
+  const [cityError, setCityError] = useState<IError>({} as IError);
+  const [nameError, setNameError] = useState<IError>({} as IError);
+  const [birthdayError, setBirthdayError] = useState<IError>({} as IError);
+  const [emailError, setEmailError] = useState<IError>({} as IError);
+  const [photoError, setPhotoError] = useState<IError>({} as IError);
+  const [genderError, setGenderError] = useState<IError>({} as IError);
+  const [checkError, setCheckError] = useState<IError>({} as IError);
+  const [agreeError, setAgreeError] = useState<IError>({} as IError);
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const cityRef = useRef<HTMLSelectElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const birthdayRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const photoRef = useRef<HTMLInputElement>(null);
+  const maleRef = useRef<HTMLInputElement>(null);
+  const femaleRef = useRef<HTMLInputElement>(null);
+  const restaurantRef = useRef<HTMLInputElement>(null);
+  const deliveryRef = useRef<HTMLInputElement>(null);
+  const cuisineRef = useRef<HTMLInputElement>(null);
+  const agreeRef = useRef<HTMLInputElement>(null);
+
+  function setCity(): void {
+    const city = cityRef.current ? cityRef.current.value : '';
+    formData = { ...formData, city };
   }
 
-  setCity(): void {
-    const city = this.cityRef.current ? this.cityRef.current.value : '';
-    this.formData = { ...this.formData, city };
+  function setName() {
+    const name = nameRef.current ? nameRef.current.value : '';
+    formData = { ...formData, name };
   }
 
-  setName() {
-    const name = this.nameRef.current ? this.nameRef.current.value : '';
-    this.formData = { ...this.formData, name };
+  function setBirthday() {
+    const birthday = birthdayRef.current ? birthdayRef.current.value : '';
+    formData = { ...formData, birthday };
   }
 
-  setBirthday() {
-    const birthday = this.birthdayRef.current ? this.birthdayRef.current.value : '';
-    this.formData = { ...this.formData, birthday };
+  function setEmail() {
+    const email = emailRef.current ? emailRef.current.value : '';
+    formData = { ...formData, email };
   }
 
-  setEmail() {
-    const email = this.emailRef.current ? this.emailRef.current.value : '';
-    this.formData = { ...this.formData, email };
-  }
-
-  setPhoto() {
-    const file = this.photoRef.current?.files![0];
+  function setPhoto() {
+    const file = photoRef.current?.files![0];
     const photo = URL.createObjectURL(file as Blob | MediaSource);
-    this.formData = { ...this.formData, photo };
+    formData = { ...formData, photo };
   }
 
-  setGender() {
+  function setGender() {
     let gender = '';
-    if (this.maleRef.current?.checked) gender = this.maleRef.current?.value;
-    if (this.femaleRef.current?.checked) gender = this.femaleRef.current?.value;
-    this.formData = { ...this.formData, gender };
+    if (maleRef.current?.checked) gender = maleRef.current?.value;
+    if (femaleRef.current?.checked) gender = femaleRef.current?.value;
+    formData = { ...formData, gender };
   }
 
-  setCheck() {
+  function setCheck() {
     const check = [] as string[];
-    if (this.restaurantRef.current?.checked) check.push(this.restaurantRef.current?.value);
-    if (this.deliveryRef.current?.checked) check.push(this.deliveryRef.current?.value);
-    if (this.cuisineRef.current?.checked) check.push(this.cuisineRef.current?.value);
-    this.formData = { ...this.formData, check: check.join(', ') };
+    if (restaurantRef.current?.checked) check.push(restaurantRef.current?.value);
+    if (deliveryRef.current?.checked) check.push(deliveryRef.current?.value);
+    if (cuisineRef.current?.checked) check.push(cuisineRef.current?.value);
+    formData = { ...formData, check: check.join(', ') };
   }
 
-  validateForm(): void {
-    this.isValidForm = false;
+  function validateForm(): void {
+    isValidForm = false;
     const formErrors = [];
-    const cityError = validateCity(this.cityRef.current?.value);
+    const cityError = validateCity(cityRef.current?.value);
     formErrors.push(cityError.error);
-    this.setState({ cityError });
-    const nameError = validateName(this.nameRef.current?.value);
+    setCityError(cityError);
+    const nameError = validateName(nameRef.current?.value);
     formErrors.push(nameError.error);
-    this.setState({ nameError });
-    const birthdayError = validateBirthday(this.birthdayRef.current?.value);
+    setNameError(nameError);
+    const birthdayError = validateBirthday(birthdayRef.current?.value);
     formErrors.push(birthdayError.error);
-    this.setState({ birthdayError });
-    const emailError = validateEmail(this.emailRef.current?.value);
+    setBirthdayError(birthdayError);
+    const emailError = validateEmail(emailRef.current?.value);
     formErrors.push(emailError.error);
-    this.setState({ emailError });
-    const photoError = validatePhoto(this.photoRef.current?.value);
+    setEmailError(emailError);
+    const photoError = validatePhoto(photoRef.current?.value);
     formErrors.push(photoError.error);
-    this.setState({ photoError });
-    const genderOptions = [this.maleRef.current?.checked, this.femaleRef.current?.checked];
+    setPhotoError(photoError);
+    const genderOptions = [maleRef.current?.checked, femaleRef.current?.checked];
     const genderError = validateGender(genderOptions);
     formErrors.push(genderError.error);
-    this.setState({ genderError });
+    setGenderError(genderError);
     const checkOptions = [
-      this.restaurantRef.current?.checked,
-      this.deliveryRef.current?.checked,
-      this.cuisineRef.current?.checked,
+      restaurantRef.current?.checked,
+      deliveryRef.current?.checked,
+      cuisineRef.current?.checked,
     ];
     const checkError = validateCheck(checkOptions);
     formErrors.push(checkError.error);
-    this.setState({ checkError });
-    const agreeError = validateAgree(this.agreeRef.current?.checked);
+    setCheckError(checkError);
+    const agreeError = validateAgree(agreeRef.current?.checked);
     formErrors.push(agreeError.error);
-    this.setState({ agreeError });
+    setAgreeError(agreeError);
 
-    if (!formErrors.includes(true)) this.isValidForm = true;
+    if (!formErrors.includes(true)) isValidForm = true;
   }
 
-  sendForm() {
-    this.setCity();
-    this.setName();
-    this.setBirthday();
-    this.setEmail();
-    this.setPhoto();
-    this.setGender();
-    this.setCheck();
-    this.props.setRequests(this.formData);
-    this.formRef.current?.reset();
+  function sendForm() {
+    setCity();
+    setName();
+    setBirthday();
+    setEmail();
+    setPhoto();
+    setGender();
+    setCheck();
+    props.setRequests(formData);
+    formRef.current?.reset();
   }
 
-  onSubmitHandler() {
-    this.validateForm();
-    if (this.isValidForm) this.sendForm();
-    this.showNotice();
+  function onSubmitHandler() {
+    validateForm();
+    if (isValidForm) sendForm();
+    showNotice();
   }
 
-  showNotice() {
-    this.setState({ showNotice: true });
+  function showNotice() {
+    setNotice(true);
     setTimeout(() => {
-      this.setState({ showNotice: false });
+      setNotice(false);
     }, 3000);
   }
 
-  render() {
-    return (
-      <>
-        <form className="form" ref={this.formRef}>
-          <Select ref={this.cityRef} name="city" />
-          {this.state?.cityError.error && (
-            <ErrorMessage errorMessages={this.state.cityError.errorMessages} />
-          )}
-          <InputText ref={this.nameRef} name="name" placeholder="Name" />
-          {this.state?.nameError.error && (
-            <ErrorMessage errorMessages={this.state.nameError.errorMessages} />
-          )}
-          <InputDate ref={this.birthdayRef} name="birthday" />
-          {this.state?.birthdayError.error && (
-            <ErrorMessage errorMessages={this.state.birthdayError.errorMessages} />
-          )}
-          <InputText ref={this.emailRef} name="email" placeholder="E-mail" />
-          {this.state?.emailError.error && (
-            <ErrorMessage errorMessages={this.state.emailError.errorMessages} />
-          )}
-          <div className="form__question">
-            <span className="form__question-label">Upload your photo:</span>
-            <input type="file" accept="image/png, image/jpeg" name="photo" ref={this.photoRef} />
-          </div>
-          {this.state?.photoError.error && (
-            <ErrorMessage errorMessages={this.state.photoError.errorMessages} />
-          )}
-          <div className="form__question">
-            <span className="form__question-label">What gender are you?</span>
-            <Radio ref={this.maleRef} name="gender" value="Male">
-              Male
-            </Radio>
-            <Radio ref={this.femaleRef} name="gender" value="Female">
-              Female
-            </Radio>
-            {this.state?.genderError.error && (
-              <ErrorMessage errorMessages={this.state.genderError.errorMessages} />
-            )}
-          </div>
-          <div className="form__question">
-            <span className="form__question-label">What are you ready to check?</span>
-            <Checkbox ref={this.restaurantRef} name="restaurant" value="Restaurant">
-              Restaurant
-            </Checkbox>
-            <Checkbox ref={this.deliveryRef} name="delivery" value="Delivery">
-              Delivery
-            </Checkbox>
-            <Checkbox ref={this.cuisineRef} name="cuisine" value="Cuisine">
-              Cuisine
-            </Checkbox>
-            {this.state?.checkError.error && (
-              <ErrorMessage errorMessages={this.state.checkError.errorMessages} />
-            )}
-          </div>
-          <div className="form__submit">
-            <Checkbox ref={this.agreeRef} name="agree" value="I agree">
-              I agree to the processing of personal data
-            </Checkbox>
-            {this.state?.agreeError.error && (
-              <ErrorMessage errorMessages={this.state.agreeError.errorMessages} />
-            )}
-            <Button onClick={this.onSubmitHandler}>Send information</Button>
-          </div>
-        </form>
-        {this.isValidForm && this.state.showNotice && (
-          <Notice className="notice notice_success">Form data has been sent successfully</Notice>
-        )}
-        {!this.isValidForm && this.state.showNotice && (
-          <Notice className="notice notice_error">Form data contain errors</Notice>
-        )}
-      </>
-    );
-  }
+  return (
+    <>
+      <form className="form" ref={formRef}>
+        <Select ref={cityRef} name="city" />
+        {cityError.error && <ErrorMessage errorMessages={cityError.errorMessages} />}
+        <InputText ref={nameRef} name="name" placeholder="Name" />
+        {nameError.error && <ErrorMessage errorMessages={nameError.errorMessages} />}
+        <InputDate ref={birthdayRef} name="birthday" />
+        {birthdayError.error && <ErrorMessage errorMessages={birthdayError.errorMessages} />}
+        <InputText ref={emailRef} name="email" placeholder="E-mail" />
+        {emailError.error && <ErrorMessage errorMessages={emailError.errorMessages} />}
+        <div className="form__question">
+          <span className="form__question-label">Upload your photo:</span>
+          <input type="file" accept="image/png, image/jpeg" name="photo" ref={photoRef} />
+        </div>
+        {photoError.error && <ErrorMessage errorMessages={photoError.errorMessages} />}
+        <div className="form__question">
+          <span className="form__question-label">What gender are you?</span>
+          <Radio ref={maleRef} name="gender" value="Male">
+            Male
+          </Radio>
+          <Radio ref={femaleRef} name="gender" value="Female">
+            Female
+          </Radio>
+          {genderError.error && <ErrorMessage errorMessages={genderError.errorMessages} />}
+        </div>
+        <div className="form__question">
+          <span className="form__question-label">What are you ready to check?</span>
+          <Checkbox ref={restaurantRef} name="restaurant" value="Restaurant">
+            Restaurant
+          </Checkbox>
+          <Checkbox ref={deliveryRef} name="delivery" value="Delivery">
+            Delivery
+          </Checkbox>
+          <Checkbox ref={cuisineRef} name="cuisine" value="Cuisine">
+            Cuisine
+          </Checkbox>
+          {checkError.error && <ErrorMessage errorMessages={checkError.errorMessages} />}
+        </div>
+        <div className="form__submit">
+          <Checkbox ref={agreeRef} name="agree" value="I agree">
+            I agree to the processing of personal data
+          </Checkbox>
+          {agreeError.error && <ErrorMessage errorMessages={agreeError.errorMessages} />}
+          <Button onClick={onSubmitHandler}>Send information</Button>
+        </div>
+      </form>
+      {isValidForm && notice && (
+        <Notice className="notice notice_success">Form data has been sent successfully</Notice>
+      )}
+      {!isValidForm && notice && (
+        <Notice className="notice notice_error">Form data contain errors</Notice>
+      )}
+    </>
+  );
 }
 
 export default Form;
