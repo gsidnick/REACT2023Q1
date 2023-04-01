@@ -21,6 +21,7 @@ import Notice from '../Notice/Notice';
 import IError from '../../interfaces/IError';
 import Select from '../UI/Select/Select';
 import { IRequest } from '../../interfaces/IRequest';
+import InputFile from '../UI/InputFile/InputFile';
 
 let formData = {} as IRequest;
 let isValidForm = false;
@@ -164,10 +165,7 @@ function Form({ ...props }: IFormProps) {
         {birthdayError.error && <ErrorMessage errorMessages={birthdayError.errorMessages} />}
         <InputText ref={emailRef} name="email" placeholder="E-mail" />
         {emailError.error && <ErrorMessage errorMessages={emailError.errorMessages} />}
-        <div className="form__question">
-          <span className="form__question-label">Upload your photo:</span>
-          <input type="file" accept="image/png, image/jpeg" name="photo" ref={photoRef} />
-        </div>
+        <InputFile ref={photoRef} label="Upload your photo:" />
         {photoError.error && <ErrorMessage errorMessages={photoError.errorMessages} />}
         <div className="form__question">
           <span className="form__question-label">What gender are you?</span>
