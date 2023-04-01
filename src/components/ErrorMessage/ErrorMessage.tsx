@@ -4,13 +4,7 @@ import IErrorMessageProps from '../../interfaces/IErrorMessageProps';
 function ErrorMessage({ ...props }: IErrorMessageProps) {
   return (
     <div className="error">
-      {props.errorMessages.map((message, index) => {
-        return (
-          <p className="error__message" key={index}>
-            {message}
-          </p>
-        );
-      })}
+      <p className="error__message">{props.errorMessage}</p>
     </div>
   );
 }

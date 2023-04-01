@@ -1,3 +1,3 @@
 export default interface IErrorMessageProps {
-  errorMessages: string[];
+  errorMessage: string | undefined;
 }
