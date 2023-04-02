@@ -18,4 +18,4 @@ function Input({ ...props }: IInputProps) {
   );
 }
 
-export default React.forwardRef(Input);
+export default Input;

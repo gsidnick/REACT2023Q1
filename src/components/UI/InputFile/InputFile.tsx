@@ -18,4 +18,4 @@ function InputFile({ ...props }: IInputFileProps) {
   );
 }
 
-export default React.forwardRef(InputFile);
+export default InputFile;
