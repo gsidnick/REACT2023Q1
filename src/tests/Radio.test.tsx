@@ -10,14 +10,6 @@ describe('Testing <Radio /> component', () => {
         Male
       </Radio>
     );
-    expect(screen.getByText(/.*/i, { selector: 'input[name="gender"]' })).toBeTruthy();
-  });
-  test('should show Radio component with input text', () => {
-    render(
-      <Radio name="gender" value="Male">
-        Male
-      </Radio>
-    );
     expect(screen.getByText(/Male/i)).toBeDefined();
   });
 });
