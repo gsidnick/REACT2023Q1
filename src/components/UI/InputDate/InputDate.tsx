@@ -2,12 +2,12 @@ import './InputDate.css';
 import React from 'react';
 import { IInputDateProps } from '../../../interfaces/IInputDateProps';
 
-function InputDate({ ...props }: IInputDateProps, ref: React.ForwardedRef<HTMLInputElement>) {
+function InputDate({ ...props }: IInputDateProps) {
   return (
     <div className="input">
-      <input className="input__field" type="date" name={props.name} ref={ref} />
+      <input className="input__field" type="date" {...props.register} />
     </div>
   );
 }
 
-export default React.forwardRef(InputDate);
+export default InputDate;

@@ -6,6 +6,9 @@ import { IRequest } from '../../interfaces/IRequest';
 import { IFormProps } from '../../interfaces/IFormProps';
 import Notice from '../Notice/Notice';
 import Select from '../UI/Select/Select';
+import InputText from '../UI/InputText/InputText';
+import InputDate from '../UI/InputDate/InputDate';
+import InputFile from '../UI/InputFile/InputFile';
 
 interface IFormData {
   City: string;
@@ -65,32 +68,38 @@ function Form({ ...props }: IFormProps) {
           }}
         />
         {errors.City && <ErrorMessage errorMessage={errors.City.message} />}
-        <input
-          type="text"
+        <InputText
           placeholder="Name"
-          {...register('Name', {
-            required: { value: true, message: 'Name is required' },
-          })}
+          register={{
+            ...register('Name', {
+              required: { value: true, message: 'Name is required' },
+            }),
+          }}
         />
         {errors.Name && <ErrorMessage errorMessage={errors.Name.message} />}
-        <input
-          type="date"
-          {...register('Birthday', { required: { value: true, message: 'Birthday is required' } })}
+        <InputDate
+          register={{
+            ...register('Birthday', { required: { value: true, message: 'Birthday is required' } }),
+          }}
         />
         {errors.Birthday && <ErrorMessage errorMessage={errors.Birthday.message} />}
-        <input
-          type="email"
-          {...register('Email', {
-            required: { value: true, message: 'Email is required' },
-            pattern: { value: /^\S+@\S+$/i, message: 'Email is invalid' },
-          })}
+        <InputText
+          placeholder="E-mail"
+          register={{
+            ...register('Email', {
+              required: { value: true, message: 'Email is required' },
+              pattern: { value: /^\S+@\S+$/i, message: 'Email is invalid' },
+            }),
+          }}
         />
         {errors.Email && <ErrorMessage errorMessage={errors.Email.message} />}
-        <input
-          type="file"
-          {...register('Photo', {
-            required: { value: true, message: 'Photo is required' },
-          })}
+        <InputFile
+          label="Upload your photo:"
+          register={{
+            ...register('Photo', {
+              required: { value: true, message: 'Photo is required' },
+            }),
+          }}
         />
         {errors.Photo && <ErrorMessage errorMessage={errors.Photo.message} />}
         <label>

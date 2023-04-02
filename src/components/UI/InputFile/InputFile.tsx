@@ -2,7 +2,7 @@ import './InputFile.css';
 import React from 'react';
 import { IInputFileProps } from '../../../interfaces/IInputFileProps';
 
-function InputFile({ ...props }: IInputFileProps, ref: React.ForwardedRef<HTMLInputElement>) {
+function InputFile({ ...props }: IInputFileProps) {
   return (
     <>
       <label className="input-file">
@@ -12,8 +12,7 @@ function InputFile({ ...props }: IInputFileProps, ref: React.ForwardedRef<HTMLIn
         className="input-file__field"
         type="file"
         accept="image/png, image/jpeg"
-        name="photo"
-        ref={ref}
+        {...props.register}
       />
     </>
   );
