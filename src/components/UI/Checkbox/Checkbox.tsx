@@ -3,16 +3,10 @@ import React from 'react';
 import { ICheckboxProps } from '../../../interfaces/ICheckboxProps';
 import IconCheck from '../Icon/IconCheck/IconCheck';
 
-function Checkbox({ ...props }: ICheckboxProps, ref: React.ForwardedRef<HTMLInputElement>) {
+function Checkbox({ ...props }: ICheckboxProps) {
   return (
     <label className="checkbox">
-      <input
-        className="checkbox__field"
-        type="checkbox"
-        name={props.name}
-        value={props.value}
-        ref={ref}
-      />
+      <input className="checkbox__field" type="checkbox" value={props.value} {...props.register} />
       <span className="checkbox__wrapper">
         <span className="checkbox__icon">
           <IconCheck />
@@ -23,4 +17,4 @@ function Checkbox({ ...props }: ICheckboxProps, ref: React.ForwardedRef<HTMLInpu
   );
 }
 
-export default React.forwardRef(Checkbox);
+export default Checkbox;

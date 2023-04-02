@@ -10,6 +10,8 @@ import InputText from '../UI/InputText/InputText';
 import InputDate from '../UI/InputDate/InputDate';
 import InputFile from '../UI/InputFile/InputFile';
 import Radio from '../UI/Radio/Radio';
+import Checkbox from '../UI/Checkbox/Checkbox';
+import Button from '../UI/Button/Button';
 
 interface IFormData {
   City: string;
@@ -123,33 +125,35 @@ function Form({ ...props }: IFormProps) {
           </Radio>
           {errors.Gender && <ErrorMessage errorMessage={errors.Gender.message} />}
         </div>
-        <label>
-          <input
-            type="checkbox"
+        <div className="form__question">
+          <span className="form__question-label">What are you ready to check?</span>
+          <Checkbox
             value="Restaurant"
-            {...register('Check', { required: { value: true, message: 'Check is required' } })}
-          />
-          <span>Restaurant</span>
-        </label>
-        <label>
-          <input type="checkbox" value="Delivery" {...register('Check', {})} />
-          <span>Delivery</span>
-        </label>
-        <label>
-          <input type="checkbox" value="Cuisine" {...register('Check', {})} />
-          <span>Cuisine</span>
-        </label>
-        {errors.Check && <ErrorMessage errorMessage={errors.Check.message} />}
-        <label>
-          <input
-            type="checkbox"
-            placeholder="Agree"
-            {...register('Agree', { required: { value: true, message: 'Agree is required' } })}
-          />
-          <span>I agree</span>
-        </label>
-        {errors.Agree && <ErrorMessage errorMessage={errors.Agree.message} />}
-
+            register={{
+              ...register('Check', { required: { value: true, message: 'Check is required' } }),
+            }}
+          >
+            Restaurant
+          </Checkbox>
+          <Checkbox value="Delivery" register={{ ...register('Check', {}) }}>
+            Delivery
+          </Checkbox>
+          <Checkbox value="Cuisine" register={{ ...register('Check', {}) }}>
+            Cuisine
+          </Checkbox>
+          {errors.Check && <ErrorMessage errorMessage={errors.Check.message} />}
+        </div>
+        <div className="form__submit">
+          <Checkbox
+            value="I agree"
+            register={{
+              ...register('Agree', { required: { value: true, message: 'Agree is required' } }),
+            }}
+          >
+            I agree to the processing of personal data
+          </Checkbox>
+          {errors.Agree && <ErrorMessage errorMessage={errors.Agree.message} />}
+        </div>
         <input type="submit" />
       </form>
       {notice && (
