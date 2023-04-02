@@ -5,7 +5,7 @@ import { IButtonProps } from '../../../interfaces/IButtonProps';
 function Button({ ...props }: IButtonProps) {
   return (
     <button
-      type="button"
+      type={props.type}
       className={props?.className ? `${props.className} button` : 'button'}
       onClick={props.onClick}
     >

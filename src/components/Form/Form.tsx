@@ -153,8 +153,8 @@ function Form({ ...props }: IFormProps) {
             I agree to the processing of personal data
           </Checkbox>
           {errors.Agree && <ErrorMessage errorMessage={errors.Agree.message} />}
+          <Button type="submit">Send information</Button>
         </div>
-        <input type="submit" />
       </form>
       {notice && (
         <Notice className="notice notice_success">Form data has been sent successfully</Notice>
