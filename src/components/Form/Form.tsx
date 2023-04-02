@@ -9,6 +9,7 @@ import Select from '../UI/Select/Select';
 import InputText from '../UI/InputText/InputText';
 import InputDate from '../UI/InputDate/InputDate';
 import InputFile from '../UI/InputFile/InputFile';
+import Radio from '../UI/Radio/Radio';
 
 interface IFormData {
   City: string;
@@ -102,23 +103,26 @@ function Form({ ...props }: IFormProps) {
           }}
         />
         {errors.Photo && <ErrorMessage errorMessage={errors.Photo.message} />}
-        <label>
-          <input
-            {...register('Gender', { required: { value: true, message: 'Gender is required' } })}
-            type="radio"
+        <div className="form__question">
+          <span className="form__question-label">What gender are you?</span>
+          <Radio
             value="Male"
-          />
-          <span>Male</span>
-        </label>
-        <label>
-          <input
-            {...register('Gender', { required: { value: true, message: 'Gender is required' } })}
-            type="radio"
+            register={{
+              ...register('Gender', { required: { value: true, message: 'Gender is required' } }),
+            }}
+          >
+            Male
+          </Radio>
+          <Radio
             value="Female"
-          />
-          <span>Female</span>
-        </label>
-        {errors.Gender && <ErrorMessage errorMessage={errors.Gender.message} />}
+            register={{
+              ...register('Gender', { required: { value: true, message: 'Gender is required' } }),
+            }}
+          >
+            Female
+          </Radio>
+          {errors.Gender && <ErrorMessage errorMessage={errors.Gender.message} />}
+        </div>
         <label>
           <input
             type="checkbox"

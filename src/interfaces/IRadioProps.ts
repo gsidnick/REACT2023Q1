@@ -1,9 +1,9 @@
 import React from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 export interface IRadioProps {
-  name: string | undefined;
   value: string;
   children?: string | React.ReactNode;
   label?: string;
-  forwardedRef?: React.LegacyRef<HTMLInputElement>;
+  register: UseFormRegisterReturn<string>;
 }

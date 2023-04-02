@@ -3,16 +3,10 @@ import React from 'react';
 import { IRadioProps } from '../../../interfaces/IRadioProps';
 import IconRadio from '../Icon/IconRadio/IconRadio';
 
-function Radio({ ...props }: IRadioProps, ref: React.ForwardedRef<HTMLInputElement>) {
+function Radio({ ...props }: IRadioProps) {
   return (
     <label className="radio">
-      <input
-        className="radio__field"
-        type="radio"
-        name={props.name}
-        value={props.value}
-        ref={ref}
-      />
+      <input className="radio__field" type="radio" value={props.value} {...props.register} />
       <span className="radio__wrapper">
         <span className="radio__icon">
           <IconRadio />
@@ -23,4 +17,4 @@ function Radio({ ...props }: IRadioProps, ref: React.ForwardedRef<HTMLInputEleme
   );
 }
 
-export default React.forwardRef(Radio);
+export default Radio;
