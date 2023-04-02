@@ -34,29 +34,21 @@ function Catalog() {
   );
 
   useEffect(() => {
-    const queryString = getLocalQuery();
-    setQuery(queryString);
-    applyFilter(queryString);
+    console.log(query);
+    const input = inputRef.current;
+    if (input) {
+      input.value = getLocalQuery();
+      applyFilter(input.value);
+    }
     return () => {
-      setLocalQuery(inputRef.current ? inputRef.current.value : '');
+      if (input) setLocalQuery(input.value || '');
     };
   }, []);
-
-  useEffect(() => {
-    if (inputRef.current != null) inputRef.current.value = query;
-    applyFilter(query);
-  }, [query]);
 
   return (
     <div className="catalog">
       <div className="catalog__search">
-        <Input
-          ref={inputRef}
-          type="text"
-          placeholder="Search"
-          value={query}
-          onChange={searchChangeHandler}
-        />
+        <Input ref={inputRef} type="text" placeholder="Search" onChange={searchChangeHandler} />
       </div>
       <div className="catalog__products">
         <List value={products} />
