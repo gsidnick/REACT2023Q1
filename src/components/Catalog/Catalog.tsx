@@ -7,11 +7,9 @@ import IProduct from '../../interfaces/IProduct';
 import { getLocalQuery, setLocalQuery } from '../../utils/localStorage';
 
 function Catalog() {
-  const [query, setQuery] = useState<string>('');
   const [products, setProducts] = useState<IProduct[]>([] as IProduct[]);
   const inputRef = useRef<HTMLInputElement>(null);
   function searchChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(event.target.value);
     applyFilter(event.target.value);
   }
 
@@ -34,7 +32,6 @@ function Catalog() {
   );
 
   useEffect(() => {
-    console.log(query);
     const input = inputRef.current;
     if (input) {
       input.value = getLocalQuery();
