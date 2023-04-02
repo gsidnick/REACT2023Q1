@@ -12,6 +12,7 @@ import InputFile from '../UI/InputFile/InputFile';
 import Radio from '../UI/Radio/Radio';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import Button from '../UI/Button/Button';
+import { isValidBirthday, isValidEmail, isValidName } from '../../utils/validators';
 
 interface IFormData {
   City: string;
@@ -33,7 +34,7 @@ function Form({ ...props }: IFormProps) {
   } = useForm<IFormData>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
-    shouldFocusError: false,
+    shouldFocusError: true,
     shouldUseNativeValidation: false,
   });
   const [notice, setNotice] = useState<boolean>(false);
@@ -76,13 +77,17 @@ function Form({ ...props }: IFormProps) {
           register={{
             ...register('Name', {
               required: { value: true, message: 'Name is required' },
+              validate: isValidName,
             }),
           }}
         />
         {errors.Name && <ErrorMessage errorMessage={errors.Name.message} />}
         <InputDate
           register={{
-            ...register('Birthday', { required: { value: true, message: 'Birthday is required' } }),
+            ...register('Birthday', {
+              required: { value: true, message: 'Birthday is required' },
+              validate: isValidBirthday,
+            }),
           }}
         />
         {errors.Birthday && <ErrorMessage errorMessage={errors.Birthday.message} />}
@@ -91,7 +96,7 @@ function Form({ ...props }: IFormProps) {
           register={{
             ...register('Email', {
               required: { value: true, message: 'Email is required' },
-              pattern: { value: /^\S+@\S+$/i, message: 'Email is invalid' },
+              validate: isValidEmail,
             }),
           }}
         />
@@ -147,7 +152,12 @@ function Form({ ...props }: IFormProps) {
           <Checkbox
             value="I agree"
             register={{
-              ...register('Agree', { required: { value: true, message: 'Agree is required' } }),
+              ...register('Agree', {
+                required: {
+                  value: true,
+                  message: 'Agree to the processing of personal data is required',
+                },
+              }),
             }}
           >
             I agree to the processing of personal data
