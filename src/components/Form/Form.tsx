@@ -5,6 +5,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { IRequest } from '../../interfaces/IRequest';
 import { IFormProps } from '../../interfaces/IFormProps';
 import Notice from '../Notice/Notice';
+import Select from '../UI/Select/Select';
 
 interface IFormData {
   City: string;
@@ -58,14 +59,11 @@ function Form({ ...props }: IFormProps) {
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <select {...register('City', { required: { value: true, message: 'City is required' } })}>
-          <option value="">Choose city</option>
-          <option value="Rome">Rome</option>
-          <option value="Milan"> Milan</option>
-          <option value="Turin">Turin</option>
-          <option value="Palermo">Palermo</option>
-          <option value="Florence">Florence</option>
-        </select>
+        <Select
+          register={{
+            ...register('City', { required: { value: true, message: 'City is required' } }),
+          }}
+        />
         {errors.City && <ErrorMessage errorMessage={errors.City.message} />}
         <input
           type="text"

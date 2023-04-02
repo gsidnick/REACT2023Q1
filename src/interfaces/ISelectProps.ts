@@ -1,6 +1,5 @@
-import React from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 export interface ISelectProps {
-  name?: string;
-  forwardedRef?: React.LegacyRef<HTMLSelectElement>;
+  register: UseFormRegisterReturn<string>;
 }
