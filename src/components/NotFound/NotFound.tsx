@@ -14,7 +14,7 @@ function NotFound() {
         <p>We didn’t find this page.</p>
         <p>But we know where to find a lot of delicious things.</p>
       </span>
-      <Button className="not-found__button" onClick={() => navigate('/')}>
+      <Button type="button" className="not-found__button" onClick={() => navigate('/')}>
         Go to home
       </Button>
     </div>

@@ -1,5 +1,5 @@
 import './Catalog.css';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Input from '../UI/Input/Input';
 import List from '../List/List';
 import data from '../../../data.json';
@@ -9,7 +9,7 @@ import { getLocalQuery, setLocalQuery } from '../../utils/localStorage';
 function Catalog() {
   const [query, setQuery] = useState<string>('');
   const [products, setProducts] = useState<IProduct[]>([] as IProduct[]);
-
+  const inputRef = useRef<HTMLInputElement>(null);
   function searchChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     setQuery(event.target.value);
     applyFilter(event.target.value);
@@ -37,16 +37,26 @@ function Catalog() {
     const queryString = getLocalQuery();
     setQuery(queryString);
     applyFilter(queryString);
+    return () => {
+      setLocalQuery(inputRef.current ? inputRef.current.value : '');
+    };
   }, []);
 
   useEffect(() => {
-    setLocalQuery(query);
+    if (inputRef.current != null) inputRef.current.value = query;
+    applyFilter(query);
   }, [query]);
 
   return (
     <div className="catalog">
       <div className="catalog__search">
-        <Input type="text" placeholder="Search" value={query} onChange={searchChangeHandler} />
+        <Input
+          ref={inputRef}
+          type="text"
+          placeholder="Search"
+          value={query}
+          onChange={searchChangeHandler}
+        />
       </div>
       <div className="catalog__products">
         <List value={products} />

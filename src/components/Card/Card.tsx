@@ -11,7 +11,9 @@ function Card({ ...props }: ICardProps) {
       <h3 className="card__title">{name}</h3>
       <span className="card__price">${price}</span>
       <span className="card__description">{description}</span>
-      <Button className="card__button">Add to cart</Button>
+      <Button type="button" className="card__button">
+        Add to cart
+      </Button>
     </div>
   );
 }
