@@ -1,0 +1,19 @@
+.notice {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.notice_error {
+  background-color: var(--rss-error-light);
+  border: 1px solid var(--rss-error);
+  color: var(--rss-error-dark);
+}
+.notice_success {
+  background-color: var(--rss-success-light);
+  border: 1px solid var(--rss-success);
+  color: var(--rss-success-dark);
+}

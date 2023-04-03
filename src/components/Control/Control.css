@@ -1,0 +1,35 @@
+.control {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+}
+
+.control__col {
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+}
+
+.control__questions {
+  grid-template-rows: 150px auto;
+}
+
+.control__requests {
+  grid-template-rows: 60px auto;
+}
+
+.control__title {
+  font-size: 36px;
+  text-align: center;
+}
+
+.control__text {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 150%;
+  text-align: center;
+}
+
+.control__list {
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+.about {
+  width: 600px;
+}
+
+.about__image {
+  border-radius: 16px;
+  object-fit: cover;
+  margin: 0 0 20px 0;
+}
+
+.about__text {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 150%;
+}
+
+.about__text > * + * {
+  margin: 20px 0 0 0;
+}

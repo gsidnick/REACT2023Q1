@@ -1,0 +1,21 @@
+.select {
+  background-color: var(--rss-white);
+  color: var(--rss-primary);
+  border-top: 1px solid var(--rss-primary);
+  border-right: 1px solid var(--rss-primary);
+  border-bottom: 1px solid var(--rss-primary);
+  border-left: 1px solid var(--rss-primary);
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.select:focus {
+  box-shadow: 0 0 0 1px var(--rss-primary);
+}

@@ -1,0 +1,5 @@
+.error {
+  font-size: 12px;
+  color: var(--rss-error);
+  padding: 0 20px;
+}

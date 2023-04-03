@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+  --rss-primary: #ff6c06;
+  --rss-primary-dark: #e86408;
+  --rss-primary-light: #ffefe9;
+  --rss-main: #3b3b3b;
+  --rss-white: #ffffff;
+  --rss-grey: #818181;
+  --rss-grey-light: #f6f6f6;
+  --rss-error-dark: #9a0b0b;
+  --rss-error: #e71717;
+  --rss-error-light: #f17474;
+  --rss-success-dark: #0e813f;
+  --rss-success: #06f66e;
+  --rss-success-light: #83ecaf;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::selection {
+  color: var(--rss-white);
+  background-color: var(--rss-primary);
+}
+
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+  background-color: var(--rss-white);
+  color: var(--rss-main);
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="text"],
+input[type="date"],
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--rss-primary);
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
